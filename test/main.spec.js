@@ -1,5 +1,4 @@
 emq.globalize();
-
 var App, Notify = EmberNotify.default;
 
 // avoid slowing down the tests
@@ -8,12 +7,10 @@ Notify.View.reopen({
   removeAfter: 0
 });
 
-module('ember-notify', {
+moduleForComponent('ember-notify', {
   setup: function() {
     Ember.run(function() {
-      App = Ember.Application.create({
-        rootElement: '#ember-testing'
-      });
+      App = Ember.Application.create();
       App.setupForTesting();
       App.injectTestHelpers();
     });
@@ -91,7 +88,7 @@ test('supports multiple containers', function() {
     parent = Ember.ContainerView.create({
       childViews: [container]
     });
-    parent.appendTo(App.rootElement);
+    parent.appendTo(document.body);
     view = container.info('Hello from another container');
   });
   Ember.run(function() {

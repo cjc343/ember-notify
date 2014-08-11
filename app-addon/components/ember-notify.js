@@ -3,7 +3,7 @@ import Notify from 'ember-notify';
 
 export default Ember.Component.extend({
   /**
-    An instance of ContainerView must be provided
+    An instance of Notify.ContainerView, defaults to the global Notify container.
    */
   notify: null,
   childViews: [],
@@ -13,8 +13,6 @@ export default Ember.Component.extend({
     this._super();
   },
   notifyView: function() {
-    var notify = this.get('notify');
-    Ember.assert("You must provide a notify property that is an instance of NotifyContainer to {{ember-notify}}", Notify.Container.detectInstance(notify));
-    return notify;
+    return this.get('notify') || Notify;
   }.property('notify')
 });
