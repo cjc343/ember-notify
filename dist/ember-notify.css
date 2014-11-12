@@ -44,3 +44,7 @@
     float: right;
   }
 }
+.ember-notify .close {
+  line-height:0;
+}
+
